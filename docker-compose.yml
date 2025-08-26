@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+
+  server:
+    build:
+        context: "."
+    image: jogenpo_api:devel
+    restart: on-failure
+    container_name: jokenpo_api_container
+    command: make run
+    # env_file: server/environment/server.env
+    volumes:
+      - .:/app
+      - static_data:/app/static
+    ports:
+      - 8898:8898
+
+volumes:
+  static_data:
