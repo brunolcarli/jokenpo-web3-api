@@ -28,11 +28,11 @@ class Query(graphene.ObjectType):
     def resolve_test_auth(self, info, **kwargs):
         return 'You are atuthenticated'
 
-    uers = graphene.List(
+    users = graphene.List(
         UserType,
-        username__icontains=graphene.String,
-        score__gte=graphene.Int,
-        score__lter=graphene.Int
+        username__icontains=graphene.String(),
+        score__gte=graphene.Int(),
+        score__lter=graphene.Int()
     )
     def resolve_users(self, info, **kwargs):
         return UserModel.objects.filter(**kwargs)
